@@ -2,10 +2,10 @@ function prijaviSe() {
   const ime = document.getElementById("ime").value;
   const password = document.getElementById("password").value;
 
-  if (ime === "" || password === "") {
-    alert("Potrebno unijeti podatke.");
+  if ((ime === "Dina") & (password === "123456")) {
+    window.location.href = "dashboard.html";
   } else {
-    console.log(ime + " je uspješno prijavljen/a.");
+    alert("Neuspjela prijava.");
   }
 }
 
@@ -15,6 +15,6 @@ forma.addEventListener("submit", function (event) {
 
   const formData = new FormData(forma);
 
-  const unosi = Object.fromEntries(formData.entries());
+  // const unosi = Object.fromEntries(formData.entries());
   // prijaviSe(unosi);
 });

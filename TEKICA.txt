@@ -1,0 +1,47 @@
+CREATE TABLE usluga(
+    id INT NOT NULL,
+    korisnik_id INT NOT NULL,
+    nazuv VARCHAR(255) NOT NULL,
+    trajanje INT,
+    cijena INT
+    );
+
+CREATE TABLE korisnik(
+    id INT NOT NULL,
+    naziv VARCHAR(255) NOT NULL,
+    email VARCHAR(100),
+    telefon VARCHAR(20),
+    adresa VARCHAR(100),
+    porezni_broj VARCHAR(50),
+    );
+
+ALTER TABLE korisnik
+	ADD CONSTRAINT korisnik_pk PRIMARY KEY (id);
+
+ALTER TABLE usluga
+     ADD CONSTRAINT usluga_pk PRIMARY KEY (id),
+        ADD CONSTRAINT usluga_korisnik_fk FOREIGN KEY (korisnik_id)
+        REFERENCES korisnik(id);
+
+CREATE TABLE rezervacija (
+    id INT NOT NULL,
+    korisnik_id INT NOT NULL,
+    usluga_id INT NOT NULL,
+    datum_vrijeme_rezervacije TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE rezervacija
+ ADD CONSTRAINT rezervacija_pk PRIMARY KEY (id),
+ ADD CONSTRAINT rezervacija_korisnik_fk FOREIGN KEY (korisnik_id) REFERENCES korisnik(id),
+ ADD CONSTRAINT rezervacija_usluga_fk FOREIGN KEY (usluga_id) REFERENCES usluga(id)
+ ;
+
+ALTER TEBLE korisnik
+ADD UNIQUE (telefon);
+ALTER TEBLE korisnik
+ADD UNIQUE (adresa);
+ALTER TEBLE korisnik
+ADD UNIQUE (email);
+ALTER TEBLE korisnik
+ADD UNIQUE (porezni_broj);
