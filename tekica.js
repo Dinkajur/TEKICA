@@ -7,6 +7,10 @@ function prijaviSe() {
   } else {
     alert("Neuspjela prijava.");
   }
+  if (!ime || !password) {
+    alert("Nedostaje ime ili lozinka!");
+    return;
+  }
 }
 
 const forma = document.getElementById("forma");
