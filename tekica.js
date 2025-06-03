@@ -4,12 +4,10 @@ function prijaviSe() {
 
   if ((ime === "Dina") & (password === "123456")) {
     window.location.href = "dashboard.html";
+  } else if (!ime || !password) {
+    alert("Nedostaje ime ili lozinka!");
   } else {
     alert("Neuspjela prijava.");
-  }
-  if (!ime || !password) {
-    alert("Nedostaje ime ili lozinka!");
-    return;
   }
 }
 
